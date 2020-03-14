@@ -64,7 +64,7 @@ public class EcoMine extends JavaPlugin implements Listener {
                         public void run() {
                             e.getBlock().setType(Material.DIAMOND_ORE);
                         }
-                    }, 20 * 8);
+                    }, 20 * 10);
                 } else if (e.getBlock().getType() == Material.LAPIS_ORE) {
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
@@ -76,7 +76,19 @@ public class EcoMine extends JavaPlugin implements Listener {
                         public void run() {
                             e.getBlock().setType(Material.EMERALD_ORE);
                         }
-                    }, 20 * 8);
+                    }, 20 * 10);
+                } else if (e.getBlock().getType() == Material.REDSTONE_ORE) {
+                    Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                        public void run() {
+                            e.getBlock().setType(Material.REDSTONE_ORE);
+                        }
+                    }, 20 * 7);
+                } else if (e.getBlock().getType() == Material.COAL_ORE) {
+                    Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                        public void run() {
+                            e.getBlock().setType(Material.COAL_ORE);
+                        }
+                    }, 20 * 5);
                 } else {
                     e.setCancelled(true);
                 }
