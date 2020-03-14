@@ -1,8 +1,6 @@
 package sk.gggedr.ecomine;
 
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -42,6 +40,7 @@ public class EcoMine extends JavaPlugin implements Listener {
                         }
                     }, 20 * 5);
                 } else if (e.getBlock().getType() == Material.IRON_ORE) {
+                    e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     e.setCancelled(true);
                     e.getBlock().setType(Material.AIR);
                     e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.IRON_INGOT));
@@ -51,6 +50,7 @@ public class EcoMine extends JavaPlugin implements Listener {
                         }
                     }, 20 * 8);
                 } else if (e.getBlock().getType() == Material.GOLD_ORE) {
+                    e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     e.setCancelled(true);
                     e.getBlock().setType(Material.AIR);
                     e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.GOLD_ORE));
@@ -60,30 +60,35 @@ public class EcoMine extends JavaPlugin implements Listener {
                         }
                     }, 20 * 8);
                 } else if (e.getBlock().getType() == Material.DIAMOND_ORE) {
+                    e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
                             e.getBlock().setType(Material.DIAMOND_ORE);
                         }
                     }, 20 * 10);
                 } else if (e.getBlock().getType() == Material.LAPIS_ORE) {
+                    e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
                             e.getBlock().setType(Material.LAPIS_ORE);
                         }
                     }, 20 * 8);
                 } else if (e.getBlock().getType() == Material.EMERALD_ORE) {
+                    e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
                             e.getBlock().setType(Material.EMERALD_ORE);
                         }
                     }, 20 * 10);
                 } else if (e.getBlock().getType() == Material.REDSTONE_ORE) {
+                    e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
                             e.getBlock().setType(Material.REDSTONE_ORE);
                         }
                     }, 20 * 7);
                 } else if (e.getBlock().getType() == Material.COAL_ORE) {
+                    e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
                             e.getBlock().setType(Material.COAL_ORE);
