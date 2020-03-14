@@ -1,17 +1,83 @@
 package sk.gggedr.ecomine;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class EcoMine extends JavaPlugin {
+public class EcoMine extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        PluginManager pm = Bukkit.getServer().getPluginManager();
+        pm.registerEvents(this, this);
 
     }
+
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    @EventHandler
+    public void onMine(BlockBreakEvent e){
+        if(e.getPlayer().getLocation().getWorld().getName().equalsIgnoreCase("mine")){
+            if(e.getBlock().getType() == Material.STONE){
+                Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                    public void run() {
+                        e.getBlock().setType(Material.STONE);
+                    }
+                }, 20*5);
+            } else if(e.getBlock().getType() == Material.COBBLESTONE){
+                Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                    public void run() {
+                        e.getBlock().setType(Material.COBBLESTONE);
+                    }
+                }, 20*5);
+            } else if(e.getBlock().getType() == Material.IRON_ORE) {
+                e.setCancelled(true);
+                e.getBlock().setType(Material.AIR);
+                e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.IRON_INGOT));
+                Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                    public void run() {
+                        e.getBlock().setType(Material.IRON_ORE);
+                    }
+                }, 20 * 8);
+            } else if(e.getBlock().getType() == Material.GOLD_ORE) {
+                e.setCancelled(true);
+                e.getBlock().setType(Material.AIR);
+                e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.GOLD_ORE));
+                Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                    public void run() {
+                        e.getBlock().setType(Material.GOLD_ORE);
+                    }
+                }, 20 * 8);
+            } else if(e.getBlock().getType() == Material.DIAMOND_ORE) {
+                Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                    public void run() {
+                        e.getBlock().setType(Material.DIAMOND_ORE);
+                    }
+                }, 20 * 8);
+            } else if(e.getBlock().getType() == Material.LAPIS_ORE) {
+                Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                    public void run() {
+                        e.getBlock().setType(Material.LAPIS_ORE);
+                    }
+                }, 20 * 8);
+            } else if(e.getBlock().getType() == Material.EMERALD_ORE) {
+                Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+                    public void run() {
+                        e.getBlock().setType(Material.EMERALD_ORE);
+                    }
+                }, 20 * 8);
+            } else {
+                e.setCancelled(true);
+            }
+        }
     }
 }
