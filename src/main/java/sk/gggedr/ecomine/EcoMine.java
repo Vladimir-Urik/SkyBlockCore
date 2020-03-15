@@ -43,7 +43,11 @@ public class EcoMine extends JavaPlugin implements Listener {
                     e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     e.setCancelled(true);
                     e.getBlock().setType(Material.AIR);
-                    e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.IRON_INGOT));
+                    if(e.getPlayer().hasPermission("gl.vip")) {
+                        e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.IRON_INGOT, 2));
+                    } else {
+                        e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.IRON_INGOT));
+                    }
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
                             e.getBlock().setType(Material.IRON_ORE);
@@ -52,8 +56,12 @@ public class EcoMine extends JavaPlugin implements Listener {
                 } else if (e.getBlock().getType() == Material.GOLD_ORE) {
                     e.getPlayer().playNote(e.getPlayer().getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.C));
                     e.setCancelled(true);
-                    e.getBlock().setType(Material.GOLD_ORE);
-                    e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.GOLD_INGOT));
+                    e.getBlock().setType(Material.AIR);
+                    if(e.getPlayer().hasPermission("gl.vip")) {
+                        e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.GOLD_INGOT, 2));
+                    } else {
+                        e.getBlock().getLocation().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.GOLD_INGOT));
+                    }
                     Bukkit.getScheduler().runTaskLater(this, new Runnable() {
                         public void run() {
                             e.getBlock().setType(Material.GOLD_ORE);
