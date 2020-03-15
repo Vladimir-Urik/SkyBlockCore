@@ -1,4 +1,4 @@
-name: EcoMine
+name: SkyBlockCore
 version: ${project.version}
 main: sk.gggedr.ecomine.EcoMine
 api-version: 1.13

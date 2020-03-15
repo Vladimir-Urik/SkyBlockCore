@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="EcoMine" />
+        <module name="SkyBlockCore" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="EcoMine" target="1.8" />
+      <module name="SkyBlockCore" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

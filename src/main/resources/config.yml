@@ -1,0 +1,14 @@
+mine-regent: #in seconds
+  stone: 3
+  cobblestone: 3
+  iron_ore: 5
+  gold_ore: 5
+  diamond_ore: 8
+  lapis_ore: 6
+  emerald_ore: 8
+  redstone_ore: 6
+  coal_ore: 4
+
+
+permissions:
+  double-drop: "gl.vip"

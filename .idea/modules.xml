@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EcoMine.iml" filepath="$PROJECT_DIR$/EcoMine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SkyBlockCore.iml" filepath="$PROJECT_DIR$/SkyBlockCore.iml" />
     </modules>
   </component>
 </project>
