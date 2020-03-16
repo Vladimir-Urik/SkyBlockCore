@@ -10,14 +10,27 @@ import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import sk.gggedr.skyblockcore.Auth.Commands;
+import sk.gggedr.skyblockcore.Auth.DeCoding;
+import sk.gggedr.skyblockcore.Auth.MySql.Join;
+import sk.gggedr.skyblockcore.Auth.MySql.MySQLMain;
 
 public class SkyBlockCore extends JavaPlugin implements Listener {
 
+    public static SkyBlockCore instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         PluginManager pm = Bukkit.getServer().getPluginManager();
         pm.registerEvents(this, this);
-        this.getConfig().options().copyDefaults(true);
+        pm.registerEvents(new Join(), this);
+        loadConfig();
+        MySQLMain.getInstance().mysqlSetup();
+        Bukkit.getPluginCommand("l").setExecutor(new Commands());
+        Bukkit.getPluginCommand("login").setExecutor(new Commands());
+        Bukkit.getPluginCommand("reg").setExecutor(new Commands());
+        Bukkit.getPluginCommand("register").setExecutor(new Commands());
     }
 
 
@@ -112,16 +125,14 @@ public class SkyBlockCore extends JavaPlugin implements Listener {
         }
     }
 
-    @EventHandler
-    public void onchatting(AsyncPlayerChatEvent e){
-        String msg = e.getMessage();
-        msg.replace("play", "****");
-        msg.replace("mc", "**");
-        msg.replace("pro", "§a§lPRO");
+
+    public static SkyBlockCore getInstance(){
+        return instance;
     }
 
-    @EventHandler
-    public void onsda(PlayerDeathEvent e){
-        e.setDeathMessage("§7[§aKill§7] Zomrel hráč: §a"+ e.getEntity().getName());
+
+    public void loadConfig(){
+        getConfig().options().copyDefaults(true);
+        saveConfig();
     }
 }

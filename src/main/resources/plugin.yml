@@ -1,7 +1,16 @@
 name: SkyBlockCore
 version: ${project.version}
-main: sk.gggedr.ecomine.EcoMine
+main: sk.gggedr.skyblockcore.SkyBlockCore
 api-version: 1.13
 authors: [GGGEDR]
 description: Easy
 website: gggedr.greenlandmc.eu
+commands:
+  reg:
+    description: registrace
+  register:
+    description: registrace
+  login:
+    description: login
+  l:
+    description: login

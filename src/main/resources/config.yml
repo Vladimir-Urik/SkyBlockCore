@@ -12,3 +12,11 @@ mine-regent: #in seconds
 
 permissions:
   double-drop: "gl.vip"
+
+auth:
+  database:
+    ip: "mysql.hostify.cz"
+    databse: ""
+    username: ""
+    password: ""
+    port: 3306
