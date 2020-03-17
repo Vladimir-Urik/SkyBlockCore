@@ -10,7 +10,6 @@ public class MySQLMain {
     private Connection connection;
     public String host, database, username, password, table;
     public int port;
-    public static MySQLMain instance;
 
 
     public void mysqlSetup() {
@@ -49,9 +48,6 @@ public class MySQLMain {
         this.connection = connection;
     }
 
-    public static MySQLMain getInstance(){
-        return instance;
-    }
 
 
 }

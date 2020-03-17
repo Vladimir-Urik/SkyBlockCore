@@ -4,29 +4,24 @@ import org.bukkit.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import sk.gggedr.skyblockcore.Auth.Commands;
-import sk.gggedr.skyblockcore.Auth.DeCoding;
 import sk.gggedr.skyblockcore.Auth.MySql.Join;
 import sk.gggedr.skyblockcore.Auth.MySql.MySQLMain;
 
 public class SkyBlockCore extends JavaPlugin implements Listener {
 
     public static SkyBlockCore instance;
+    MySQLMain mm = new MySQLMain();
 
     @Override
     public void onEnable() {
         instance = this;
-        PluginManager pm = Bukkit.getServer().getPluginManager();
-        pm.registerEvents(this, this);
-        pm.registerEvents(new Join(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new Join(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(this, this);
         loadConfig();
-        MySQLMain.getInstance().mysqlSetup();
+        mm.mysqlSetup();
         Bukkit.getPluginCommand("l").setExecutor(new Commands());
         Bukkit.getPluginCommand("login").setExecutor(new Commands());
         Bukkit.getPluginCommand("reg").setExecutor(new Commands());

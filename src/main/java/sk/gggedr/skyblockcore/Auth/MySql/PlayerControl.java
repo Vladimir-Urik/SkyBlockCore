@@ -8,11 +8,12 @@ import java.util.UUID;
 public class PlayerControl {
 
     public static PlayerControl instance;
+    MySQLMain mysql = new MySQLMain();
 
     public boolean isRegister(UUID uuid) {
         try {
-            PreparedStatement statement = MySQLMain.getInstance().getConnection()
-                    .prepareStatement("SELECT * FROM " + MySQLMain.getInstance().table + " WHERE UUID=?");
+            PreparedStatement statement = mysql.getConnection()
+                    .prepareStatement("SELECT * FROM " + mysql.table + " WHERE UUID=?");
             statement.setString(1, uuid.toString());
 
             ResultSet results = statement.executeQuery();
@@ -26,8 +27,5 @@ public class PlayerControl {
         return false;
     }
 
-    public static PlayerControl getInstance(){
-        return instance;
-    }
 
 }

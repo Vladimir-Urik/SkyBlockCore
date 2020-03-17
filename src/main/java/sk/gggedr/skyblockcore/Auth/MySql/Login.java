@@ -10,12 +10,13 @@ import java.sql.SQLException;
 public class Login {
 
     public static Login instance;
+    MySQLMain mysql = new MySQLMain();
 
     public boolean PasswordSucceful(Player p, String password){
         boolean s = false;
             try {
-                PreparedStatement statement = MySQLMain.getInstance().getConnection()
-                        .prepareStatement("SELECT * FROM " + MySQLMain.getInstance().table + " WHERE UUID=?");
+                PreparedStatement statement = mysql.getConnection()
+                        .prepareStatement("SELECT * FROM " + mysql.table + " WHERE UUID=?");
                 statement.setString(1, p.getUniqueId().toString());
                 ResultSet results = statement.executeQuery();
                 results.next();
@@ -32,7 +33,4 @@ public class Login {
             return s;
     }
 
-    public static Login getInstance(){
-        return instance;
-    }
 }

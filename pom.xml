@@ -6,7 +6,7 @@
 
     <groupId>sk.GGGEDR</groupId>
     <artifactId>SkyBlockCore</artifactId>
-    <version>1.1-BETA</version>
+    <version>1.2-BETA</version>
     <packaging>jar</packaging>
 
     <name>EcoMine</name>

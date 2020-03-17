@@ -4,8 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.*;
 import sk.gggedr.skyblockcore.SkyBlockCore;
 
 import java.util.ArrayList;
@@ -14,12 +13,14 @@ import java.util.List;
 public class Join implements Listener {
     public int login, register;
 
+    PlayerControl pc = new PlayerControl();
+
     public List<Player> queue = new ArrayList<Player>();
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        queue.add(e.getPlayer());
-        if(PlayerControl.getInstance().isRegister(e.getPlayer().getUniqueId())){
+        queue.add(e.getPlayer());//Pridá hráča do fronty
+        if(pc.isRegister(e.getPlayer().getUniqueId())){
             login = Bukkit.getScheduler().scheduleSyncRepeatingTask(SkyBlockCore.getInstance(), new Runnable() {
                 @Override
                 public void run() {
@@ -47,9 +48,30 @@ public class Join implements Listener {
     }
 
     @EventHandler
+    public void onchat(AsyncPlayerChatEvent e){
+        if(queue.contains(e.getPlayer())){
+            e.setMessage(" ");
+        }
+    }
+
+    @EventHandler
+    public void oncmd(PlayerCommandSendEvent e){
+        if(queue.contains(e.getPlayer())){
+            e.getCommands().clear();
+        }
+    }
+
+    @EventHandler
     public void onMove(PlayerMoveEvent e){
         if(queue.contains(e.getPlayer())){
             e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onLeave(PlayerQuitEvent e){
+        if(queue.contains(e.getPlayer())){
+            queue.remove(queue.indexOf(e.getPlayer()));
         }
     }
 

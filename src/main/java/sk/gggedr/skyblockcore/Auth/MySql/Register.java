@@ -10,19 +10,21 @@ import java.util.UUID;
 
 public class Register {
     public static Register instance;
+    MySQLMain mysql = new MySQLMain();
+    PlayerControl pc = new PlayerControl();
 
 
     public void newPlayer(final UUID uuid, Player player, String password) {
         try {
-            PreparedStatement statement = MySQLMain.getInstance().getConnection()
-                    .prepareStatement("SELECT * FROM " + MySQLMain.getInstance().table + " WHERE UUID=?");
+            PreparedStatement statement = mysql.getConnection()
+                    .prepareStatement("SELECT * FROM " + mysql.table + " WHERE UUID=?");
             statement.setString(1, uuid.toString());
             ResultSet results = statement.executeQuery();
             results.next();
             System.out.print(1);
-            if (PlayerControl.getInstance().isRegister(uuid) != true) {
-                PreparedStatement insert = MySQLMain.getInstance().getConnection()
-                        .prepareStatement("INSERT INTO " + MySQLMain.getInstance().table + " (UUID,NICK,IP,PASSWORD) VALUES (?,?,?,?,?)");
+            if (pc.isRegister(uuid) != true) {
+                PreparedStatement insert = mysql.getConnection()
+                        .prepareStatement("INSERT INTO " + mysql.table + " (UUID,NICK,IP,PASSWORD) VALUES (?,?,?,?,?)");
                 insert.setString(1, uuid.toString());
                 insert.setString(2, player.getName());
                 insert.setString(3, player.getAddress().toString());
@@ -35,7 +37,4 @@ public class Register {
         }
     }
 
-    public static Register getInstance(){
-        return instance;
-    }
 }

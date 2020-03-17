@@ -12,16 +12,19 @@ import sk.gggedr.skyblockcore.Auth.MySql.Register;
 public class Commands implements CommandExecutor {
 
     Join js = new Join();
+    PlayerControl pc = new PlayerControl();
+    Register reg = new Register();
+    Login l = new Login();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player = (Player) sender;
         if (cmd.getName().equalsIgnoreCase("register") || cmd.getName().equalsIgnoreCase("reg")){
             if(js.queue.contains(player)) {
-                if(!PlayerControl.getInstance().isRegister(player.getUniqueId())) {
+                if(!pc.isRegister(player.getUniqueId())) {
                     if (args.length == 2) {
                         if(args[0].equalsIgnoreCase(args[1])){
-                            Register.getInstance().newPlayer(player.getUniqueId(), player, args[0]);
+                            reg.newPlayer(player.getUniqueId(), player, args[0]);
                             player.sendMessage("§7[§aServer§7] §7Bol si zaregistrovaný a automaticky prihlásení!!");
                             js.queue.remove(js.queue.get(js.queue.indexOf(player)));
                         } else {
@@ -41,7 +44,7 @@ public class Commands implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("login") || cmd.getName().equalsIgnoreCase("l")){
             if(js.queue.contains(player)) {
                     if (args.length == 1) {
-                        if(Login.getInstance().PasswordSucceful(player, args[0])){
+                        if(l.PasswordSucceful(player, args[0])){
                             player.sendMessage("§7[§aServer§7] §aÚspešne si sa prihlásil!!");
                             js.queue.remove(js.queue.get(js.queue.indexOf(player)));
                         } else {
