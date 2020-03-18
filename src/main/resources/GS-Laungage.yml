@@ -9,6 +9,11 @@ join-msg: "&7[&a&l+&7] <player>"
 leave-msg: "&7[&c&l-&7] <player>"
 new-player-msg: "&7[&aUvítanie&7] Vitaj &a<player> &7! Veríme že sa ti u nás zapáči!!"
 
+gamemodes:
+  creative:
+  spectator:
+  survival:
+  adventure:
 
 ####︱︱︱︱ ┏┓︱︱ ︱︱︱︱ ︱┏┓︱####
 ####︱︱︱︱ ┃┃︱︱ ︱︱︱︱ ┏┛┗┓####
