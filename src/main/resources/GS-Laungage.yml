@@ -1,0 +1,25 @@
+####┏━━━┓ ┏┓︱︱︱ ┏━━━┓ ┏━━┓︱ ┏━━━┓ ┏┓︱︱︱####
+####┃┏━┓┃ ┃┃︱︱︱ ┃┏━┓┃ ┃┏┓┃︱ ┃┏━┓┃ ┃┃︱︱︱####
+####┃┃︱┗┛ ┃┃︱︱︱ ┃┃︱┃┃ ┃┗┛┗┓ ┃┃︱┃┃ ┃┃︱︱︱####
+####┃┃┏━┓ ┃┃︱┏┓ ┃┃︱┃┃ ┃┏━┓┃ ┃┗━┛┃ ┃┃︱┏┓####
+####┃┗┻━┃ ┃┗━┛┃ ┃┗━┛┃ ┃┗━┛┃ ┃┏━┓┃ ┃┗━┛┃####
+###┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗┛︱┗┛ ┗━━━┛#####
+
+join-msg: "&7[&a&l+&7] <player>"
+leave-msg: "&7[&c&l-&7] <player>"
+new-player-msg: "&7[&aUvítanie&7] Vitaj &a<player> &7! Veríme že sa ti u nás zapáči!!"
+
+
+####︱︱︱︱ ┏┓︱︱ ︱︱︱︱ ︱┏┓︱####
+####︱︱︱︱ ┃┃︱︱ ︱︱︱︱ ┏┛┗┓####
+####┏━━┓ ┃┗━┓ ┏━━┓ ┗┓┏┛####
+####┃┏━┛ ┃┏┓┃ ┃┏┓┃ ︱┃┃︱####
+####┃┗━┓ ┃┃┃┃ ┃┏┓┃ ︱┃┗┓####
+####┗━━┛ ┗┛┗┛ ┗┛┗┛ ︱┗━┛####
+
+chat-format: "<prefix> &7<player> &f> &7<msg>"
+admin-chat-format: "<prefix> &7<player> &f> &a<msg>"
+helper-chat-format: "<prefix> &7<player> &f> &a<msg>"
+builder-chat-format: "<prefix> &7<player> &f> &a<msg>"
+friend-chat-format: "<prefix> &7<player> &f> &a<msg>"
+vip-chat-format: "<prefix> &7<player> &f> &7<msg>"

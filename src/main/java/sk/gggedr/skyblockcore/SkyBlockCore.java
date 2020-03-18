@@ -1,31 +1,89 @@
 package sk.gggedr.skyblockcore;
 
+import net.milkbowl.vault.chat.Chat;
+import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.permission.Permission;
 import org.bukkit.*;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import sk.gggedr.skyblockcore.Auth.Commands;
-import sk.gggedr.skyblockcore.Auth.MySql.Join;
-import sk.gggedr.skyblockcore.Auth.MySql.MySQLMain;
+import sk.gggedr.skyblockcore.Auth.RegisterMethods;
+
+import java.io.File;
+import java.io.IOException;
 
 public class SkyBlockCore extends JavaPlugin implements Listener {
 
     public static SkyBlockCore instance;
-    MySQLMain mm = new MySQLMain();
-
+    public File GSLaungage = new File(SkyBlockCore.getInstance().getDataFolder()+"/GS-Laungage.yml");
+    RegisterMethods auth = new RegisterMethods();
+    sk.gggedr.skyblockcore.GreenSentials.RegisterMethods ess = new sk.gggedr.skyblockcore.GreenSentials.RegisterMethods();
+    private static Economy econ = null;
+    private static Permission perms = null;
+    private static Chat chat = null;
     @Override
     public void onEnable() {
         instance = this;
-        Bukkit.getServer().getPluginManager().registerEvents(new Join(), this);
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         loadConfig();
-        mm.mysqlSetup();
-        Bukkit.getPluginCommand("l").setExecutor(new Commands());
-        Bukkit.getPluginCommand("login").setExecutor(new Commands());
-        Bukkit.getPluginCommand("reg").setExecutor(new Commands());
-        Bukkit.getPluginCommand("register").setExecutor(new Commands());
+        //EcoSentialss
+        FileConfiguration gll = YamlConfiguration.loadConfiguration(GSLaungage);
+        gll.options().copyDefaults(true);
+        ess.all();
+        //Auth
+        auth.all();
+        try {
+            gll.save(GSLaungage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (!setupEconomy() ) {
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+        setupPermissions();
+        setupChat();
+    }
+
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = rsp.getProvider();
+        return econ != null;
+    }
+
+    private boolean setupChat() {
+        RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
+        chat = rsp.getProvider();
+        return chat != null;
+    }
+
+    private boolean setupPermissions() {
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        perms = rsp.getProvider();
+        return perms != null;
+    }
+
+    public static Economy getEconomy() {
+        return econ;
+    }
+
+    public static Permission getPermissions() {
+        return perms;
+    }
+
+    public static Chat getChat() {
+        return chat;
     }
 
 
@@ -130,4 +188,5 @@ public class SkyBlockCore extends JavaPlugin implements Listener {
         getConfig().options().copyDefaults(true);
         saveConfig();
     }
+
 }
