@@ -20,7 +20,7 @@ import java.io.IOException;
 public class SkyBlockCore extends JavaPlugin implements Listener {
 
     public static SkyBlockCore instance;
-    public File GSLaungage = new File(SkyBlockCore.getInstance().getDataFolder()+"/GS-Laungage.yml");
+    public File GSLaungage = new File(getDataFolder()+"/GS-Laungage.yml");
     RegisterMethods auth = new RegisterMethods();
     sk.gggedr.skyblockcore.GreenSentials.RegisterMethods ess = new sk.gggedr.skyblockcore.GreenSentials.RegisterMethods();
     private static Economy econ = null;
