@@ -9,9 +9,12 @@ mine-regent: #in seconds
   redstone_ore: 6
   coal_ore: 4
 
+no-permissions: "&7[&aChyba&7] Na toto nemáš dostatočnú hodnosť :D"
 
 permissions:
   double-drop: "gl.vip"
+  gamemode: "gl.gm"
+  gamemode-other: "gl.gm.other"
 
 auth:
   database:

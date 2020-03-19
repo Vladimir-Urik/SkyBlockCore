@@ -13,6 +13,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import sk.gggedr.skyblockcore.Auth.RegisterMethods;
+import sk.gggedr.skyblockcore.GreenSentials.Commands.GameModeGM;
+import sk.gggedr.skyblockcore.GreenSentials.Events.ChatFormat;
+import sk.gggedr.skyblockcore.GreenSentials.Events.JoinLeave;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +37,11 @@ public class SkyBlockCore extends JavaPlugin implements Listener {
         //EcoSentialss
         FileConfiguration gll = YamlConfiguration.loadConfiguration(GSLaungage);
         gll.options().copyDefaults(true);
-        ess.all();
+        Bukkit.getServer().getCommandMap().register("gl", new GameModeGM("gm"));
+        Bukkit.getServer().getCommandMap().register("gl", new GameModeGM("gamemode"));
+        Bukkit.getServer().getPluginManager().registerEvents(new JoinLeave(), SkyBlockCore.getInstance());
+        Bukkit.getServer().getPluginManager().registerEvents(new ChatFormat(), SkyBlockCore.getInstance());
+        //ess.all();
         //Auth
         auth.all();
         try {

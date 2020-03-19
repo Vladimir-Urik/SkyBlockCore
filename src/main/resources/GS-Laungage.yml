@@ -9,7 +9,11 @@ join-msg: "&7[&a&l+&7] <player>"
 leave-msg: "&7[&c&l-&7] <player>"
 new-player-msg: "&7[&aUvítanie&7] Vitaj &a<player> &7! Veríme že sa ti u nás zapáči!!"
 
+player-offline: "§7[§aServer§7] Tento hráč je Offline!!"
+
 gamemode: "&7[&aGM&7] Tvoj herný mód bol zmenení na: &a<mode>"
+gamemode-other: "&7[&aServer&7] Hráčovi: &a<target> &7si zmenil herný mód na: &a<mode>"
+gamemode-usage: "&7[&aServer&7] Použi: &a/gm|gamemode <survival|creative|adventure|spectator|0|1|2|3|c|a|s|sp>"
 
 ####︱︱︱︱ ┏┓︱︱ ︱︱︱︱ ︱┏┓︱####
 ####︱︱︱︱ ┃┃︱︱ ︱︱︱︱ ┏┛┗┓####

@@ -23,4 +23,8 @@ public class API {
     public static String PlaceholderGamemode(FileConfiguration fc, Player p, String address, GameMode gm){
         return  PlaceHolder(fc, p, address).replaceAll("<mode>", gm.name());
     }
+
+    public static String PlaceholderOtherGamemode(FileConfiguration fc, Player p, String address, GameMode gm, Player target){
+        return  PlaceHolder(fc, p, address).replaceAll("<mode>", gm.name()).replaceAll("<target>", target.getName());
+    }
 }
