@@ -1,5 +1,4 @@
 # SkyBlockCore
 GreenLand SkyBlockCore Plugin
-#Please read a license.txt
 
-Developed by GGGEDR
+- These are my beginnings with java.
